@@ -281,8 +281,9 @@ function distinct(arr) {
  *    createNDimensionalArray(4, 2) => [[[[0, 0], [0, 0]], [[0, 0], [0, 0]]], [[[0, 0], [0, 0]], [[0, 0], [0, 0]]]]
  *    createNDimensionalArray(1, 1) => [0]
  */
-function createNDimensionalArray(/* n, size */) {
-  throw new Error('Not implemented');
+function createNDimensionalArray(n, size) {
+
+
 }
 
 /**
@@ -591,8 +592,26 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length === 0) return [];
+  if (arr.length === 1) return arr;
+  if (arr.length === 2 || arr.length === 3) return arr.reverse();
+  let result;
+  let mid;
+  let head;
+  let tail;
+  const mediana = Math.floor(arr.length / 2);
+  if (arr.length % 2 === 0) {
+    head = arr.slice(0, mediana);
+    tail = arr.slice(mediana);
+    result = [...tail, ...head];
+  } else {
+    mid = arr[mediana];
+    head = arr.slice(0, mediana);
+    tail = arr.slice(mediana + 1);
+    result = [...tail, mid, ...head];
+  }
+  return result;
 }
 
 module.exports = {
